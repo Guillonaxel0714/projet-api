@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^/?([a-z]+)/([0-9]*)$ /banque/?page=$1&id=$2 [L]
+RewriteRule ^/?([a-z]+)$ /banque/?page=$1 [L]
