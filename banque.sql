@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 09 oct. 2020 à 10:45
+-- Généré le : sam. 17 oct. 2020 à 16:36
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.2.33
 
@@ -92,8 +92,16 @@ CREATE TABLE `user` (
   `nom` varchar(60) NOT NULL,
   `prenom` varchar(60) NOT NULL,
   `mail` varchar(60) NOT NULL,
-  `pass` varchar(60) NOT NULL
+  `password` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `nom`, `prenom`, `mail`, `password`) VALUES
+(1, 'Doe', 'John', 'johnD@gmail.com', 'motdepasse'),
+(2, 'Jsp', 'Paul', 'Pauljsp@gmail.com', 'sdkljfhsdf');
 
 --
 -- Index pour les tables déchargées
@@ -165,7 +173,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées

@@ -8,9 +8,9 @@ require 'vendor/autoload.php';
 $db = new Database();
 
 $page = ucfirst($_GET["page"]);
-if ($page == "Dist") {
-    header("Location: /projet-api/dist/index.html");
-}
+// if ($page == "Dist") {
+//     header("Location: /apirest/dist/index.html");
+// }
 require $page.".php";
 $class = new $page();
 $method = false;
@@ -68,3 +68,4 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         # code...
         break;
 }
+

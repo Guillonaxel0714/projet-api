@@ -46,7 +46,7 @@ class General {
     }
 
     /**
-     * Save new categorie in Db
+     * Save in Db
      *
      * @param array $param
      */
@@ -66,7 +66,7 @@ class General {
     }
 
     /**
-     * Delete a categorie line in Db
+     * Delete a line in Db
      *
      * @param int $id
      */
@@ -77,7 +77,7 @@ class General {
     }
 
     /**
-     * Modify a category line in Db
+     * Modify a line in Db
      *
      * @param int $id
      * @param array $param

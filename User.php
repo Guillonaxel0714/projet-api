@@ -1,7 +1,5 @@
 <?php
 
-use \Firebase\JWT\JWT;
-
 require "General.php";
 
 class User extends General{
@@ -15,7 +13,7 @@ class User extends General{
      */
     public function connexion($param)
     {
-        $statement = ("SELECT * FROM user WHERE email='". $param["email"] ."'");
+        $statement = ("SELECT * FROM user WHERE mail='". $param["mail"] ."'");
         $user = $this->db->queryReturn($statement, true);
         if (password_verify($param["password"], $user["password"])) {
             $key = "demo";
@@ -34,10 +32,10 @@ class User extends General{
      * @param array $param
      */
     public function save($param){
-        $statement = "INSERT INTO $this->table (nom, prenom, mail, pass) 
-                        VALUES (:nom, :prenom, :mail, :pass)";
+        $statement = "INSERT INTO $this->table (nom, prenom, mail, password) 
+                        VALUES (:nom, :prenom, :mail, :password)";
 
-        $param["pass"] = password_hash($param["pass"], PASSWORD_DEFAULT);
+        $param["password"] = password_hash($param["password"], PASSWORD_DEFAULT);
 
         $this->db->prepare($statement, "save", $param);
     }
