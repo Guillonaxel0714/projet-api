@@ -1,4 +1,4 @@
 RewriteEngine on
 
-RewriteRule ^/?([a-z]+)/([0-9]*)$ /semaine-api/?page=$1&id=$2 [L]
-RewriteRule ^/?([a-z]+)$ /semaine-api/?page=$1 [L]
+RewriteRule ^/?([a-z]+)/([0-9]*)$ /projet-api/?page=$1&id=$2 [L]
+RewriteRule ^/?([a-z]+)$ /projet-api/?page=$1 [L]

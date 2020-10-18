@@ -1,10 +1,7 @@
 <?php
 
-use \Firebase\JWT\JWT;
-
 require "General.php";
-
-class User extends General{
+class Client extends General{
 
     protected $table = __CLASS__;
 
@@ -15,16 +12,11 @@ class User extends General{
      */
     public function connexion($param)
     {
-        $statement = ("SELECT * FROM user WHERE mail='". $param["mail"] ."'");
+        $statement = ("SELECT * FROM client WHERE username='". $param["username"] ."'");
         $user = $this->db->queryReturn($statement, true);
+        var_dump($user);
         if (password_verify($param["password"], $user["password"])) {
-            $key = "demo";
-            $payload = array(
-                "exp" => time() * 1200,
-                "id" => $user["id"]
-            );
-            $token = JWT::encode($payload, $key);
-            $this->db->sendData("connexion ok", true, $token);
+            $this->db->sendData("connexion ok", true, $user["apiKey"]);
         }
     }
 
@@ -32,12 +24,15 @@ class User extends General{
      * Save client in Db
      *
      * @param array $param
+     * @return void
      */
     public function save($param){
-        $statement = "INSERT INTO $this->table (mail, password) 
-                        VALUES (:mail, :password)";
+        $statement = "INSERT INTO $this->table (username, password, role, apiKey) 
+                        VALUES (:username, :password, :role, :apiKey)";
 
         $param["password"] = password_hash($param["password"], PASSWORD_DEFAULT);
+        $param["role"] = json_encode(["ROLE_USER"]);
+        $param["apiKey"] = md5(uniqid());
 
         $this->db->prepare($statement, "save", $param);
     }
