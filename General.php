@@ -1,6 +1,6 @@
 <?php
 
-// require "Database.php";
+require "Database.php";
 
 class General {
 
@@ -46,7 +46,7 @@ class General {
     }
 
     /**
-     * Save in Db
+     * Save new categorie in Db
      *
      * @param array $param
      */
@@ -66,7 +66,7 @@ class General {
     }
 
     /**
-     * Delete a line in Db
+     * Delete a categorie line in Db
      *
      * @param int $id
      */
@@ -77,7 +77,7 @@ class General {
     }
 
     /**
-     * Modify a line in Db
+     * Modify a category line in Db
      *
      * @param int $id
      * @param array $param

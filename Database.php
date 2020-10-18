@@ -38,38 +38,13 @@ class Database {
     }
 
     /**
-     * Get informations from Db
-     *
-     * @param string $statement
-     * @param boolean $one
-     * @return object
-     */
-    public function queryReturn($statement, $one = false){
-
-        try {
-            
-            $statement = $this->pdo->query($statement, PDO::FETCH_ASSOC);
-
-            if ($one) {
-                $data = $statement->fetch();
-            } else {
-                $data = $statement->fetchAll();
-            }
-            return $data;
-
-        } catch (\Throwable $th) {
-            return $th;
-        }
-    }
-
-    /**
      * Create, update or delete informations in Db
      *
      * @param string $statement
      * @param string $action
      * @param array $param
      */
-    public function prepare($statement, $action = "delete",  $param = array())
+    public function prepare($statement, $action = "save",  $param = array())
     {
         try {
             $statement = $this->pdo->prepare($statement);
@@ -100,7 +75,7 @@ class Database {
      * @param array $data
      * @return void
      */
-    public function sendData($message, $success= false, $data = array())
+    private function sendData($message, $success= false, $data = array())
     {
         $result["success"] = $success;
         $result["message"] = $message;
@@ -108,5 +83,6 @@ class Database {
 
         header('content-type:application/json');
         echo json_encode($result);
+
     }
 }
